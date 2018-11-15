@@ -39,7 +39,7 @@ flags.DEFINE_string('input_shape', None, "If input_type is 'image_tensor', "
                     "used for unknown dimensions. If not specified, for an "
                     "'image_tensor', the default shape will be partially "
                     "specified as '[None, None, None, 3]'.")
-flags.DEFINE_string('trained_checkpoint_prefix', '/home/tianming/slim_model/plant/training/model.ckpt-25423',
+flags.DEFINE_string('trained_checkpoint_prefix', '/home/tianming/slim_model/plant/training/model.ckpt-40000',
                     'Path to trained checkpoint, typically of the form '
                     'path/to/model.ckpt')
 flags.DEFINE_string('output_directory', 'frozen', 'Path to write outputs')

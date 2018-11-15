@@ -21,9 +21,9 @@ flags.DEFINE_string('checkpoint_path',
                     'resnet_v1_152.ckpt',
                     'Path to pretrained ResNet model.')
 flags.DEFINE_string('logdir', './training', 'Path to log directory.')
-flags.DEFINE_float('learning_rate', 0.0005, 'Initial learning rate.')#0.001
+flags.DEFINE_float('learning_rate', 0.001, 'Initial learning rate.')#0.001
 flags.DEFINE_float(
-    'learning_rate_decay_factor', 0.1, 'Learning rate decay factor.')
+    'learning_rate_decay_factor', 0.7, 'Learning rate decay factor.')
 flags.DEFINE_float(
     'num_epochs_per_decay', 3.0,
     'Number of epochs after which learning rate decays. Note: this flag counts '
@@ -159,7 +159,7 @@ def get_trainable_variables(trainable_scopes):
 
 def main(_):
     # Specify which gpu to be used
-    # os.environ["CUDA_VISIBLE_DEVICES"] = '0'
+    os.environ["CUDA_VISIBLE_DEVICES"] = '0'
 
     num_samples = FLAGS.num_samples
     dataset = get_record_dataset(FLAGS.record_path, num_samples=num_samples,
@@ -174,17 +174,17 @@ def main(_):
     # Border expand and resize
     image = preprocessing.border_expand(image, resize=True, output_height=img_size,
                                         output_width=img_size)
-    val_image = preprocessing.border_expand(val_image, resize=True, output_height=img_size,
-                                        output_width=img_size)
+    # val_image = preprocessing.border_expand(val_image, resize=True, output_height=img_size,
+    #                                     output_width=img_size)
 
     inputs, labels = tf.train.batch([image, label],
                                     batch_size=FLAGS.batch_size,
                                     # capacity=5*FLAGS.batch_size,
                                     allow_smaller_final_batch=True)
-    val_inputs, val_labels = tf.train.batch([val_image, val_label],
-                                    batch_size=FLAGS.batch_size,
-                                    # capacity=5*FLAGS.batch_size,
-                                    allow_smaller_final_batch=True)
+    # val_inputs, val_labels = tf.train.batch([val_image, val_label],
+    #                                 batch_size=FLAGS.batch_size,
+    #                                 # capacity=5*FLAGS.batch_size,
+    #                                 allow_smaller_final_batch=True)
 
     cls_model = model.Model(is_training=True, num_classes=61)
 

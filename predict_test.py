@@ -21,10 +21,10 @@ flags.DEFINE_string('frozen_inference_graph_path',
                     'Path to frozen inference graph.')
 flags.DEFINE_string('images_dir', 
                     '/data2/raycloud/jingxiong_datasets/AIChanllenger/' +
-                     'AgriculturalDisease_testA/images', 
+                     'AgriculturalDisease_testB/images',
                     'Path to images (directory).')
 flags.DEFINE_string('output_path', 
-                    './87466_152_lr002_fc300.json',
+                    './8729_fcbatch.json',
                     'Path to output file.')
 
 FLAGS = flags.FLAGS

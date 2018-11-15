@@ -46,8 +46,10 @@ class Model(object):
         net = tf.squeeze(net, axis=[1, 2])
         # net = slim.fully_connected(net, num_outputs=400,
         #                            activation_fn=tf.nn.relu, scope='prePredict1')
+        net = slim.batch_norm(net, is_training=self._is_training)
         net = slim.fully_connected(net, num_outputs=300,
-                                      activation_fn=tf.nn.relu, scope='prePredict2')
+                                   activation_fn=tf.nn.relu, scope='prePredict2')
+        net = slim.batch_norm(net, is_training=self._is_training)
 
         logits = slim.fully_connected(net, num_outputs=self.num_classes,
                                       activation_fn=None, scope='Predict')

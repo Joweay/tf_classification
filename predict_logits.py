@@ -16,15 +16,15 @@ import predictor
 flags = tf.app.flags
 
 flags.DEFINE_string('frozen_inference_graph_path',
-                    './frozen/'+
+                    './frozen87577/'+
                     'frozen_inference_graph.pb',
                     'Path to frozen inference graph.')
 flags.DEFINE_string('images_dir', 
                     '/data2/raycloud/jingxiong_datasets/AIChanllenger/' +
-                     'AgriculturalDisease_testA/images', 
+                     'AgriculturalDisease_testB/images',
                     'Path to images (directory).')
 flags.DEFINE_string('output_path', 
-                    './test_result_logit_8775_152_300.json',
+                    './testB_logit_dtm_87577.json',
                     'Path to output file.')
 
 FLAGS = flags.FLAGS
